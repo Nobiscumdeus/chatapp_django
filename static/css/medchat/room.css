@@ -1,0 +1,145 @@
+:root{
+    --sender-bg-color:#2c3e50;
+    --receiver-bg-color: #34495e /* Darker blue for receiver messages */
+
+}
+  
+body{
+    background: radial-gradient(circle, rgba(25,95,25,1) 20%, rgb(204, 182, 56) 75%);
+    color:#fff;
+}
+
+#chatLog{
+    display:flex;
+    flex-direction:column;
+    max-height: 50vh; /* Adjust as needed */
+    overflow-y: scroll;
+    border:1px solid #ccc;
+    padding: 10px; /* Add padding inside the chat log container */
+    border-radius: 10px; /* Add rounded corners to the chat log container */
+    background-color: transparent; /* Set a light background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); /* Add a subtle box shadow */
+    /* Linear gradient background */
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(204,204,204,1) 100%);
+  /* For older browsers */
+  
+  
+  background: -moz-radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(204,204,204,1) 100%);
+  background: -o-radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(204,204,204,1) 100%);
+  background: -moz-radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(204,204,204,1) 100%);
+}
+
+
+.message-box {
+    max-width:60%;
+    padding: 10px;
+    border-radius: 10px;
+    border:1px solid #ccc;
+    word-wrap: break-word;
+    margin-bottom: 5px;
+    position: relative;
+    
+}
+
+.sender-message {
+    background-color:var(--sender-bg-color);
+    /**background-color:rgb(20,24,130); **/
+    color:#fff;
+    padding:10px 10px;
+    align-self:flex-end;
+    
+
+}
+.receiver-message {
+    background-color:var(--receiver-bg-color);
+    color:#fff;
+    padding:10px 10px;
+    align-self:flex-start;
+}
+
+
+.sender-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+   font-size:large;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.message-content {
+    text-align: center;
+   font-size:large;
+   margin:10px;
+    min-width:20vh;
+}
+.date {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: smaller;
+    
+    align-self:flex-end;
+    font-style:italic;
+    
+}
+.input-group{
+    display:flex;
+    align-items:center;
+}
+#chatMessageInput{
+    flex: 1;
+    min-height: 60px; /* Adjust as needed */
+    resize: none;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    font-size: 16px;
+}
+#chatMessageSend {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff; /* Change color as needed */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+#chatMessageSend:hover {
+    background-color: #0056b3; /* Change color as needed */
+  }
+
+
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.arrow-left {
+    border-width: 8px 12px 8px 0; /* Adjust border-width for arrow shape */
+    border-color: #fff transparent #fff #fff; /* Arrow pointing left */
+    top: calc(50% - 8px); /* Position arrow vertically at the middle */
+    right: -12px; /* Adjust right position to align with message box */
+    transform: rotate(180deg); /* Rotate arrow by 180 degrees to point outward */
+    background-color: var(--receiver-bg-color); /* Match background color of sender message box */
+   
+
+}
+
+.arrow-right {
+    border-width: 8px 12px 8px 0; /* Adjust border-width for arrow shape */
+    border-color: #fff transparent #fff #fff; /* Arrow pointing right */
+    top: calc(50% - 8px); /* Position arrow vertically at the middle */
+    left: -12px; /* Adjust left position to align with message box */
+    transform: rotate(0deg); /* Rotate arrow by 180 degrees to point outward */
+    background-color:var(--sender-bg-color);/* Match background color of receiver message box */
+}
+.group_date{
+    align-self:center;
+    color:#000;
+    
+}

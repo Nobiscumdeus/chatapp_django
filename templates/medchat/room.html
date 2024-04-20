@@ -1,0 +1,82 @@
+{% extends 'medchat/base.html' %}
+{% load static %}
+
+
+{% block title %} Room {% endblock %}
+{% block css_link %}
+    <link rel="stylesheet" href="{% static 'css/medchat/room.css' %}" type="text/css">
+{% endblock %}
+
+
+
+
+{% block css %}
+<style type="text/css">
+ 
+
+
+
+  
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-3 pt-5">
+        <h2> Med chat app with channels  </h2>
+       
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="mb-3">
+                    <label for="chatLog">Room : #{{room.name}} </label>
+                 
+                    <div id="chatLog" class="chat-log border rounded p-3 mb-3">
+                        
+                        {% for group in grouped_messages %}
+                            <h2 class="group_date">{{ group.date_label }}</h2>
+                            {% for message in group.messages %}
+                                <div class="message-box {% if message.user.username == request.user.username %} sender-message {% else %} receiver-message {% endif %}">
+                                    <div class="sender-name">{{ message.user.username }}</div>
+                                    <div class="message-content">{{ message.content }}</div>
+                                    <div class="date">{{ message.timestamp }}</div>
+                                    <div class="arrow {% if message.user.username == request.user.username %} arrow-right {% else %} arrow-left {% endif %}"></div> <!-- Message arrow/icon -->
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    
+                  
+
+
+                </div>
+                <div class="input-group">
+                   <!--<input type="text" class="form-control" id="chatMessageInput" placeholder="Enter your chat message">--> 
+                    <textarea class="form-control" id="chatMessageInput" placeholder="Enter your chat message here "></textarea>
+                    <div class="input-group-append">
+                        <button class="btn btn-success" id="chatMessageSend" type="button">Send </button>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-4 offset-md-2">
+                <label for="onlineUsers">Online Users </label> 
+                <select multiple class="form-control" id="onlineusersSelector">
+
+                </select>
+            </div>
+        </div>
+        {{ room.name|json_script:"roomName"}}
+    </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+    // Render current user's username into a global JavaScript variable
+    var currentUser = "{{ request.user.username }}"; 
+</script>
+<script type="text/javascript" src="{% static '/js/medchat/room.js' %}"></script>
+
+
+{% endblock %}

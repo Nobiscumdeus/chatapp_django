@@ -1,0 +1,6 @@
+.vscode 
+*.vscode
+Pipfile.lock 
+.vscode/settings.json
+.vscode/
+db.sqlite3

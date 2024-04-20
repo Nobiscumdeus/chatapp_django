@@ -1,0 +1,43 @@
+{% extends 'medchat/base.html' %}
+{% load static %}
+
+
+    {% block css %}
+    <style type="text/css">
+        #roomSelect{
+            height:300px;
+        }
+    </style>
+
+    {% endblock %}
+
+
+    {% block content %}
+        <div class="container mt-3 p-5">
+            <h2>Medchat Application</h2>
+            <div class="row">
+                <div class="col-12 col-md-5 offset-md-2">
+                    <div class="mb-3">
+                        <label for="roomInput"> Enter a room name to connect to </label>
+                        <input type="text" class="form-control" id="roomInput" placeholder="Enter Room name">
+                        <small id="roomInputHelp" class="form-text text-muted">If the room doesn't exist yet,it will be created for you </small>
+                    </div>
+                    <button type="button" id="roomSubmit" class="btn btn-success"> Submit</button>
+
+                </div>
+                <div class="col-12 col-md-4 offset-md-2">
+                    <label for="roomSelect"> Active rooms </label>
+                    <select multiple class="form-control" id="roomSelect">
+                        {% for room in rooms %}
+                        <option> {{ room }} </option>
+                        {%  endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block javascript %}
+    <script type="text/javascript" src="{% static '/js/medchat/index.js' %}"></script>
+    
+    {% endblock %}
